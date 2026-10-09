@@ -42,4 +42,8 @@ public class Dimension {
     public CompoundBinaryTag getData() {
         return data;
     }
+
+    public int getHeight() {
+        return data == null ? 384 : data.getInt("height", 384);
+    }
 }

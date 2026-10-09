@@ -27,6 +27,7 @@ public class PacketLoginSuccess implements PacketOut {
 
     private UUID uuid;
     private String username;
+    private UUID sessionId;
 
     public void setUuid(UUID uuid) {
         this.uuid = uuid;
@@ -34,6 +35,10 @@ public class PacketLoginSuccess implements PacketOut {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public void setSessionId(UUID sessionId) {
+        this.sessionId = sessionId;
     }
 
     @Override
@@ -51,6 +56,10 @@ public class PacketLoginSuccess implements PacketOut {
         }
         if (version.fromTo(Version.V1_20_5, Version.V1_21)) {
             msg.writeBoolean(true);
+        }
+        // sessionId was present only in 26.2 and removed in 26.3
+        if (version.equals(Version.V26_2)) {
+            msg.writeUuid(sessionId);
         }
     }
 

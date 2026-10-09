@@ -81,7 +81,15 @@ public enum Version {
     V1_21_4(769, "1.21.4"),
     V1_21_5(770, "1.21.5"),
     V1_21_6(771, "1.21.6"),
-    V1_21_7(772, "1.21.7");
+    V1_21_7(772, "1.21.7"),
+    // 1.21.8 has same protocol number
+    V1_21_9(773, "1.21.9"),
+    // 1.21.10 has same protocol number
+    V1_21_11(774, "1.21.11"),
+    V26_1(775, "26.1"),
+    // 26.1.1-26.1.2 has same protocol number
+    V26_2(776, "26.2"),
+    V26_3(777, "26.3");
 
     private static final Map<Integer, Version> VERSION_MAP;
     private static final Version MAX;

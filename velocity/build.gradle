@@ -1,5 +1,24 @@
 group 'com.bivashy.limbo'
 
+def velocityApiVersion = findProperty('velocityApiVersion') ?: '3.1.1'
+
+def velocityJavaVersion = 11
+if (velocityApiVersion.startsWith('3.4')) {
+    velocityJavaVersion = 17
+} else if (velocityApiVersion.startsWith('3.5')) {
+    velocityJavaVersion = 21
+}
+
+java {
+    sourceCompatibility = JavaVersion.toVersion(velocityJavaVersion)
+    targetCompatibility = JavaVersion.toVersion(velocityJavaVersion)
+}
+
+tasks.withType(JavaCompile).configureEach {
+    sourceCompatibility = JavaVersion.toVersion(velocityJavaVersion)
+    targetCompatibility = JavaVersion.toVersion(velocityJavaVersion)
+}
+
 repositories {
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     maven { url 'https://jitpack.io' }
@@ -12,12 +31,13 @@ dependencies {
     implementation 'com.github.Revxrsal.Lamp:velocity:3.0.8'
     implementation 'net.kyori:adventure-text-minimessage:4.11.0'
     compileOnly 'org.spongepowered:configurate-yaml:4.1.2'
-    compileOnly 'com.velocitypowered:velocity-api:3.1.1'
-    annotationProcessor 'com.velocitypowered:velocity-api:3.1.1'
+    compileOnly "com.velocitypowered:velocity-api:${velocityApiVersion}"
+    annotationProcessor "com.velocitypowered:velocity-api:${velocityApiVersion}"
 }
 
 shadowJar {
     manifest {
         attributes 'Main-Class': 'ua.nanit.limbo.NanoLimbo'
     }
+    archiveClassifier = velocityApiVersion
 }

@@ -39,6 +39,7 @@ public class PacketJoinGame implements PacketOut {
     private boolean isDebug;
     private boolean isFlat;
     private boolean limitedCrafting;
+    private boolean onlineMode;
     private boolean secureProfile;
 
     public void setEntityId(int entityId) {
@@ -99,6 +100,10 @@ public class PacketJoinGame implements PacketOut {
 
     public void setLimitedCrafting(boolean limitedCrafting) {
         this.limitedCrafting = limitedCrafting;
+    }
+
+    public void setOnlineMode(boolean onlineMode) {
+        this.onlineMode = onlineMode;
     }
 
     public void setSecureProfile(boolean secureProfile) {
@@ -333,6 +338,10 @@ public class PacketJoinGame implements PacketOut {
             msg.writeBoolean(false);
             msg.writeVarInt(0);
             msg.writeVarInt(0);
+            // onlineMode was present only in 26.2 and removed in 26.3
+            if (version.equals(Version.V26_2)) {
+                msg.writeBoolean(onlineMode);
+            }
             msg.writeBoolean(secureProfile);
         }
     }

@@ -53,6 +53,10 @@ public final class DimensionRegistry {
     private CompoundBinaryTag codec_1_21_5;
     private CompoundBinaryTag codec_1_21_6;
     private CompoundBinaryTag codec_1_21_7;
+    private CompoundBinaryTag codec_1_21_9;
+    private CompoundBinaryTag codec_1_21_11;
+    private CompoundBinaryTag codec_26_1;
+    private CompoundBinaryTag codec_26_2;
 
     private CompoundBinaryTag tags_1_20_5;
     private CompoundBinaryTag tags_1_21;
@@ -61,6 +65,10 @@ public final class DimensionRegistry {
     private CompoundBinaryTag tags_1_21_5;
     private CompoundBinaryTag tags_1_21_6;
     private CompoundBinaryTag tags_1_21_7;
+    private CompoundBinaryTag tags_1_21_9;
+    private CompoundBinaryTag tags_1_21_11;
+    private CompoundBinaryTag tags_26_1;
+    private CompoundBinaryTag tags_26_2;
 
     public DimensionRegistry(ClassLoader classLoader) {
         this.classLoader = classLoader;
@@ -124,6 +132,22 @@ public final class DimensionRegistry {
 
     public CompoundBinaryTag getCodec_1_21_7() {
         return codec_1_21_7;
+    }
+
+    public CompoundBinaryTag getCodec_1_21_9() {
+        return codec_1_21_9;
+    }
+
+    public CompoundBinaryTag getCodec_1_21_11() {
+        return codec_1_21_11;
+    }
+
+    public CompoundBinaryTag getCodec_26_1() {
+        return codec_26_1;
+    }
+
+    public CompoundBinaryTag getCodec_26_2() {
+        return codec_26_2;
     }
 
     public Dimension getDefaultDimension_1_16() {
@@ -194,6 +218,22 @@ public final class DimensionRegistry {
         return tags_1_21_7;
     }
 
+    public CompoundBinaryTag getTags_1_21_9() {
+        return tags_1_21_9;
+    }
+
+    public CompoundBinaryTag getTags_1_21_11() {
+        return tags_1_21_11;
+    }
+
+    public CompoundBinaryTag getTags_26_1() {
+        return tags_26_1;
+    }
+
+    public CompoundBinaryTag getTags_26_2() {
+        return tags_26_2;
+    }
+
     public void load(String def) throws IOException {
         codec_1_16 = readCompoundBinaryTag("dimension/codec_1_16.nbt");
         codec_1_16_2 = readCompoundBinaryTag("dimension/codec_1_16_2.nbt");
@@ -210,6 +250,10 @@ public final class DimensionRegistry {
         codec_1_21_5 = readCompoundBinaryTag("dimension/codec_1_21_5.nbt");
         codec_1_21_6 = readCompoundBinaryTag("dimension/codec_1_21_6.nbt");
         codec_1_21_7 = readCompoundBinaryTag("dimension/codec_1_21_7.nbt");
+        codec_1_21_9 = readCompoundBinaryTag("dimension/codec_1_21_9.nbt");
+        codec_1_21_11 = readCompoundBinaryTag("dimension/codec_1_21_11.nbt");
+        codec_26_1 = readCompoundBinaryTag("dimension/codec_26_1.nbt");
+        codec_26_2 = readCompoundBinaryTag("dimension/codec_26_2.nbt");
 
         tags_1_20_5 = readCompoundBinaryTag("dimension/tags_1_20_5.nbt");
         tags_1_21 = readCompoundBinaryTag("dimension/tags_1_21.nbt");
@@ -218,6 +262,10 @@ public final class DimensionRegistry {
         tags_1_21_5 = readCompoundBinaryTag("dimension/tags_1_21_5.nbt");
         tags_1_21_6 = readCompoundBinaryTag("dimension/tags_1_21_6.nbt");
         tags_1_21_7 = readCompoundBinaryTag("dimension/tags_1_21_7.nbt");
+        tags_1_21_9 = readCompoundBinaryTag("dimension/tags_1_21_9.nbt");
+        tags_1_21_11 = readCompoundBinaryTag("dimension/tags_1_21_11.nbt");
+        tags_26_1 = readCompoundBinaryTag("dimension/tags_26_1.nbt");
+        tags_26_2 = readCompoundBinaryTag("dimension/tags_26_2.nbt");
 
         defaultDimension_1_16 = getLegacyDimension(def);
         defaultDimension_1_16_2 = getModernDimension(def, codec_1_16_2);

@@ -1,8 +1,11 @@
 group 'com.bivashy.limbo'
 
+def bungeeApiVersion = findProperty('bungeeApiVersion') ?: '1.21-R0.2'
+
 repositories {
     mavenCentral()
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url 'https://repo.papermc.io/repository/maven-public/' }
     maven { url 'https://jitpack.io' }
     maven { url "https://libraries.minecraft.net" }
 }
@@ -12,11 +15,12 @@ dependencies {
     implementation 'com.github.Revxrsal.Lamp:common:3.0.8'
     implementation 'com.github.Revxrsal.Lamp:bungee:3.0.8'
     compileOnly 'org.spongepowered:configurate-yaml:4.1.2'
-    compileOnly 'net.md-5:bungeecord-api:1.21-R0.2'
+    compileOnly "net.md-5:bungeecord-api:${bungeeApiVersion}"
 }
 
 shadowJar {
     manifest {
         attributes 'Main-Class': 'ua.nanit.limbo.NanoLimbo'
     }
+    archiveClassifier = bungeeApiVersion
 }
